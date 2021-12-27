@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "types": ["@types/node", "@types/jest"],
+    "outDir": "typings"
+  },
+  "include": ["src/**/*"]
+}
