@@ -19,10 +19,9 @@ export function tsConfigPaths({
 	let root = ""
 	return {
 		name: PLUGIN_NAME,
+		enforce: "pre",
 		configResolved(config) {
 			root = config.root
-		},
-		buildStart() {
 			log = createLogger({ logLevel: convertLogLevel(logLevel), colors, ID: PLUGIN_NAME })
 			log(LogLevel.Debug, `typescript version: ${ts.version}`)
 			handler = createHandler({
@@ -33,7 +32,18 @@ export function tsConfigPaths({
 				falllback: moduleName => (fs.existsSync(moduleName) ? moduleName : undefined),
 			})
 		},
-		async resolveId(request: string, importer?: string) {
+		handleHotUpdate(ctx) {
+			if (ctx.file.endsWith(".json")) {
+				handler = createHandler({
+					log,
+					tsConfigPath,
+					respectCoreModule,
+					searchPath: root,
+					falllback: moduleName => (fs.existsSync(moduleName) ? moduleName : undefined),
+				})
+			}
+		},
+		resolveId(request: string, importer?: string) {
 			if (!importer || request.startsWith("\0")) {
 				return null
 			}
@@ -48,7 +58,9 @@ export function tsConfigPaths({
 
 			const moduleName = handler?.(request, importer)
 			if (!moduleName) {
-				return this.resolve(request, importer, { skipSelf: true }) + suffix
+				return this.resolve(request + suffix, importer, {
+					skipSelf: true,
+				})
 			}
 
 			log(LogLevel.Debug, `${request} -> ${moduleName}`)

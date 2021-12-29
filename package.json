@@ -1,11 +1,14 @@
 {
   "name": "vite-plugin-tsconfig-paths",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Vite plugin for resolving tsconfig paths",
   "license": "MIT",
   "main": "dist/index.cjs.js",
   "types": "typings/index.d.ts",
   "author": "lightyen",
+  "repository": {
+    "url": "https://github.com/lightyen/vite-plugin-tsconfig-paths"
+  },
   "scripts": {
     "types": "tsc --project tsconfig.json --declaration --emitDeclarationOnly --outDir typings",
     "test": "jest",

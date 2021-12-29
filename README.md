@@ -7,6 +7,15 @@
 
 Vite plugin for resolving tsconfig paths
 
+```js
+import { defineConfig } from "vite"
+import { tsConfigPaths } from "vite-plugin-tsconfig-paths"
+
+export default defineConfig({
+	plugins: [tsConfigPaths()],
+})
+```
+
 ## reference
 
 - https://www.typescriptlang.org/docs/handbook/module-resolution.html#path-mapping
