@@ -15,7 +15,7 @@
     "build": "rollup -c",
     "format": "prettier --config .prettierrc.yml --write {src,tests,typings}/**/*",
     "prepare": "pnpm test && pnpm build && pnpm types && pnpm format",
-    "doit": "pnpm upgrade-interactive --latest"
+    "doit": "pnpm update --interactive --latest"
   },
   "keywords": [
     "vite",
