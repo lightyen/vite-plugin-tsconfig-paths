@@ -1,5 +1,9 @@
 # vite-plugin-tsconfig-paths
 
+This repo has been moved into [typescript-paths](https://github.com/lightyen/typescript-paths).
+
+---
+
 [npm:latest]: https://www.npmjs.com/package/vite-plugin-tsconfig-paths/v/latest
 [npm:latest:badge]: https://img.shields.io/npm/v/vite-plugin-tsconfig-paths/latest?style=flat-square
 
